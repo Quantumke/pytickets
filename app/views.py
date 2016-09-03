@@ -58,3 +58,55 @@ def loginuser(request):
 			print "Ivalid username password"
 
 	return render_to_response('home.html', {}, context_instance=context)
+def homepage(request):
+	context = RequestContext(request,
+                           {'request': request,
+                            'user': request.user})
+	header_events1=Event.objects.latest('id')
+	f1l1= header_events1.title
+	id=header_events1.pk
+	f1l1= list(f1l1)
+	f1l1= f1l1[0]
+
+	header_events2=Event.objects.get(id=id-1)
+	f2l1= header_events2.title
+	f2l1= list(f2l1)
+	f2l1= f2l1[0]
+
+	header_events3=Event.objects.get(id=id-2)
+	f3l1= header_events3.title
+	f3l1= list(f3l1)
+	f3l1= f3l1[0]
+	header_events4=Event.objects.get(id=id-3)
+	f4l1= header_events4.title
+	f4l1= list(f4l1)
+	f4l1= f4l1[0]
+	upcomming_events=Event.objects.filter(featured=True)[:4]
+	featured_upcomming=Event.objects.filter(featured=True)[:4]
+	leisure_events=Event.objects.filter(category=1)
+	cultural_events=Event.objects.filter(category=2)
+	balls=Event.objects.filter(category=3)
+	awards_and_gallas=Event.objects.filter(category=4)
+
+	return render_to_response('home.html',{
+		'header_events1':header_events1,
+		'f1l1':f1l1,
+		'header_events2':header_events2,
+		'f2l1':f2l1,
+		'header_events3':header_events3,
+		'f3l1':f3l1,
+		'header_events4':header_events4,
+		'f4l1':f4l1,
+		'upcomming_events':upcomming_events,
+		'featured_upcomming':featured_upcomming,
+		'leisure_events':leisure_events,
+		'cultural_events':cultural_events,
+		'balls':balls,
+		'awards_and_gallas':awards_and_gallas,
+
+
+
+
+		}, context_instance=context)
+
+
