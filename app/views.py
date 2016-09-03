@@ -184,3 +184,15 @@ def add_to_cart(request):
 
 
 	return render_to_response('single-event.html',{}, context_instance=context)
+def remove_from_cart(request, event_id):
+	product = Event.objects.get(id=event_id)
+	print product
+	cart = Cart(request)
+	cart.remove(product)
+
+
+def get_cart(request):
+	context = RequestContext(request)
+
+	return render_to_response('cart.html', dict(cart=Cart(request)), context_instance=context)
+
