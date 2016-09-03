@@ -58,5 +58,15 @@ class Event(models.Model):
 		return(self.slug)
 
 
+class newsletter(models.Model):
+	email=models.CharField(max_length=200, unique=True)
+	date=models.DateField(default=datetime.now, blank=False)
+
+	class Meta:
+		ordering=['-date']
+	def __unicode__(self):
+		return self.email
+
+
 
 
