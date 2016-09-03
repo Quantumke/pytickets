@@ -163,4 +163,24 @@ def view_more(request, slug):
 		'days':days,
 		'sec':sec,
 
-	},RequestContext
+	},RequestContext(request))
+
+def add_to_cart(request):
+	context=RequestContext(request)
+	if request.method=='POST':
+		select_event=request.POST['select_event']
+		quantity=request.POST['quantity']
+		eventid=request.POST['eventid']
+		price=request.POST['price']
+		product=Event.objects.get(id=eventid)
+		total_price= int(quantity) * int(price)
+		cart=Cart(request)
+		cart.add(product, price, quantity)
+		email = request.user
+		email= email.email
+		return HttpResponseRedirect('/checkout')
+
+
+
+
+	return render_to_response('single-event.html',{}, context_instance=context)
