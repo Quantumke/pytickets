@@ -196,3 +196,21 @@ def get_cart(request):
 
 	return render_to_response('cart.html', dict(cart=Cart(request)), context_instance=context)
 
+def request_payment(request):
+	context = RequestContext(request)
+	if request.method == 'POST':
+		amount = request.POST['amount']
+		client = pesapal.PesaPal(consumer_key, consumer_secret, True)
+		request_data = {
+			'Amount': str(1000),
+			'Description': 'Purchase of tickets from karibupay',
+			'Type': 'MERCHANT',
+			'Reference': str(datetime.now()),
+			'Email': 'nguruben@gmail.com'
+		}
+		post_params = {
+			'oauth_callback': 'http://f79cbce8.ngrok.io/process_orders'
+		}
+		pesapal_request = client.postDirectOrder(post_params, request_data)
+
+	return  render_to_response('pay.html',{'iframe_url': pesapal_request.to_url()}, context_instance=context)
