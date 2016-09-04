@@ -214,3 +214,61 @@ def request_payment(request):
 		pesapal_request = client.postDirectOrder(post_params, request_data)
 
 	return  render_to_response('pay.html',{'iframe_url': pesapal_request.to_url()}, context_instance=context)
+def process_order(request):
+	date = datetime.now()
+	if not request.user.is_authenticated:
+		return render(request, 'myapp/login_error.html')
+	else:
+		print request.user
+	tracking_id = request.GET.get('pesapal_transaction_tracking_id', '')
+	reference = request.GET.get('pesapal_merchant_reference', '')
+	errors = ''
+	msg = ''
+	if tracking_id and reference:
+		params = {
+                    'pesapal_merchant_reference': reference,
+                    'pesapal_transaction_tracking_id': tracking_id
+                 }
+		client = pesapal.PesaPal(consumer_key, consumer_secret, True)
+		pesapal_request = client.queryPaymentStatus(params)
+		url = pesapal_request.to_url()
+		#print url
+		pesapal_response = requests.get(url)
+		pesapal_response_data = pesapal_response.text
+		#print pesapal_response_data
+		pesapal_status = pesapal_response_data.split('=')[1]
+		#email = request.user
+		#email = email.email
+		confirmation_code=random.randint(1, 1000)
+		if pesapal_status == 'COMPLETED':
+			response = HttpResponse(content_type='application/pdf')
+			response['Content-Disposition'] = 'inline; filename="barcode.pdf"'
+			buffer = BytesIO()
+			p = canvas.Canvas(buffer)
+			p.setLineWidth(.3)
+			p.setFont('Helvetica', 12)
+			p.drawString(30, 750, 'KaribuPay Ticket')
+			p.drawString(30, 735, 'Event Ticket')
+			p.drawString(350, 750, str(date))
+			barcode = code39.Extended39(str(confirmation_code), barWidth=0.5 * mm, barHeight=20 * mm)
+			barcode.drawOn(p, 30, 600)
+			p.showPage()
+			p.save()
+			pdf = buffer.getvalue()
+			buffer.close()
+			response.write(pdf)
+			print confirmation_code
+
+			msg = 'Transaction was successful'
+			print 'Transaction was successful'
+		else:
+			msg = 'Transaction status is %s'%(pesapal_status)
+			print 'Transaction status is %s'%(pesapal_status)
+		p_ref = Pesapal(tracking_id=tracking_id, reference=reference, status=pesapal_status)
+		#p_ref.save()
+	else:
+		errors ='Please Try again'
+	return response
+
+
+	#return render_to_response('process_pay.html', {'errors': errors, 'msg': msg, 'a':a}, context_instance=RequestContext(request))
