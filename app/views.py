@@ -272,3 +272,24 @@ def process_order(request):
 
 
 	#return render_to_response('process_pay.html', {'errors': errors, 'msg': msg, 'a':a}, context_instance=RequestContext(request))
+def barcode(request):
+	date=datetime.now()
+	print date
+	response = HttpResponse(content_type='application/pdf')
+	response['Content-Disposition'] = 'inline; filename="barcode.pdf"'
+	buffer = BytesIO()
+	p = canvas.Canvas(buffer)
+	p.setLineWidth(.3)
+	p.setFont('Helvetica', 12)
+	p.drawString(30, 750, 'KaribuPay Ticket')
+	p.drawString(30, 735, 'Event Ticket')
+	p.drawString(350, 750, str(date))
+	barcode = code39.Extended39("123456789", barWidth=0.5 * mm, barHeight=20 * mm)
+	barcode.drawOn(p, 30 , 600 )
+	p.showPage()
+	p.save()
+	pdf = buffer.getvalue()
+	buffer.close()
+	response.write(pdf)
+	return response
+
