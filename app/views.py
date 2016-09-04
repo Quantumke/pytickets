@@ -308,3 +308,24 @@ def barcode(request):
 	buffer.close()
 	response.write(pdf)
 	return response
+def send_equiry(request):
+	context=RequestContext(request)
+	if request.method=='POST':
+		name=request.POST['name']
+		from_email=request.POST['email']
+		subject=request.POST['subject']
+		message=request.POST['message']
+		print name, from_email, subject, message
+		if subject and message and from_email:
+			try:
+				send_mail(subject, message, from_email, ['ben@i254.co.ke'])
+			except BadHeaderError:
+				messages.warning(request, 'Invalid headers.')
+			messages.success(request, 'Thank You for your Feedback, well Get Back to You Soon.')
+		else:
+			# In reality we'd use a form class
+			# to get proper validation errors.
+			messages.error(request, 'Please FIll In all Forms.')
+
+	return render_to_response('index.html', {}, context_instance=context)
+
