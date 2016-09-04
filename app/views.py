@@ -5,10 +5,26 @@ from datetime import datetime, timedelta
 from django.utils.timezone import utc
 from django.core.mail import send_mail, BadHeaderError
 from django.core.servers.basehttp import FileWrapper
-
-
-
-
+from reportlab.graphics.barcode import code39, code128, code93
+from reportlab.graphics.barcode import eanbc, qr, usps
+from reportlab.graphics.shapes import Drawing
+from reportlab.lib.pagesizes import letter
+from reportlab.lib.units import mm
+from reportlab.pdfgen import canvas
+from reportlab.graphics import renderPDF
+from django.contrib import messages
+from app.models import *
+from app.forms import *
+from django.contrib.auth import authenticate, login
+from django.http import *
+from cart.cart import Cart
+import  requests
+import pesapal
+import random
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.units import mm
+from io import BytesIO
 
 
 # Create your views here.
@@ -292,4 +308,3 @@ def barcode(request):
 	buffer.close()
 	response.write(pdf)
 	return response
-
