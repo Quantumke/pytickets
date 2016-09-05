@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description">
+        <meta property="og:title" content="">
+        <meta property="og:description">
+        <meta property="og:url" content="">
+        <meta property="og:image" content="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,900"><link rel="stylesheet" href="http://cdn.karibupay.co.ke/css/vegas.min.css">
+        <link rel="stylesheet" href="http://cdn.karibupay.co.ke/css/styles.min.css">
+        <link rel="stylesheet" type="text/css" href="http://cdn.karibupay.co.ke/css/menu_bubble.css" />
+		<script src="http://cdn.karibupay.co.ke/js/snap.svg-min.js"></script>
+        <link rel="stylesheet" type="text/css" href="http://cdn.karibupay.co.ke/css/normalize.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://cdn.karibupay.co.ke/css/animate.css">
+        <link rel="stylesheet" href="http://cdn.karibupay.co.ke/css/foundation.css">
+        <link rel="stylesheet" href="http://cdn.karibupay.co.ke/css/animations.css">
+  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+
+        <title>Karibu Pay::Home</title>
+
+    </head>
+    <body>
+        <div class="homepage" >
+	<div class="container">
+			<div class="menu-wrap">
+				<nav class="menu">
+					<div class="icon-list">
+						<a href="#"><i class="fa fa-fw fa-star-o"></i><span class="menu">Favorites</span></a>
+						<a href="#"><i class="fa fa-fw fa-bell-o"></i><span class="menu">Alerts</span></a>
+						<a href="#"><i class="fa fa-fw fa-envelope-o"></i><span class="menu">Messages</span></a>
+						<a href="#"><i class="fa fa-fw fa-comment-o"></i><span class="menu">Comments</span></a>
+						<a href="#"><i class="fa fa-fw fa-bar-chart-o"></i><span class="menu">Analytics</span></a>
+						<a href="#"><i class="fa fa-fw fa-newspaper-o"></i><span class="menu">Reading List</span></a>
+					</div>
+				</nav>
+				<button class="close-button" id="close-button">Close Menu</button>
+				<div class="morph-shape" id="morph-shape" data-morph-open="M-7.312,0H15c0,0,66,113.339,66,399.5C81,664.006,15,800,15,800H-7.312V0z;M-7.312,0H100c0,0,0,113.839,0,400c0,264.506,0,400,0,400H-7.312V0z">
+					<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
+						<path d="M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z"/>
+					</svg>
+				</div>
+			</div>
+			<button class="menu-button animated bounceInRight" id="open-button">Open Menu</button>
+        <span style="position: absolute;top: 35px; left: 120px"><img src="http://cdn.karibupay.co.ke/img/mksitelogo.png" height="40" width="100"> </span>
+
+			<div class="content-wrap">
+				<div class="content">
+            <div class="tweet-it">
+
+               <img class="logo-karibupay" src="http://cdn.karibupay.co.ke/img/KaribuPay%20Logo-01.png" height="40px" width="120px">
+            </div>
+
+            <div class="homepage-header" id="bg-overlay">
+                <div class="animatedParent overlay-gradient">
+
+                <div class="homepage-info ">
+                    <h1><span style="color:#E9A728" class="line1 animated growIn ">KaribuPay Ltd</span><br>
+                        {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+                        <span style="color:#4374B2" class="line3 animated growIn  delay-750 " >Empowering People's Lives</span></h1>
+                    <div class="readmore-btn animated growIn delay-1000" >
+                <span style="text-transform: uppercase">Start your tour now</span>
+                    </div>
+
+                    <div class="or-line  animated growIn delay-1250">
+                    <span>--  or  --</span>
+                    </div>
+                    <div class="sign-up-line  animated growIn delay-1500">
+                    <span><a href="/home/" style="color: white; text-decoration: none">sign up to proceed</a> </span>
+                    </div>
+
+<!--
+                    <div class="buy-tickets-btn">
+                    <span>Buy Tickets</span>
+                    </div>
+-->
+
+
+
+
+                </div>
+                <div class="animated   pulse delay-1750 scroll-down-icon ">
+                    </div>
+
+                </div>
+
+            </div>
+
+                    <div class="how-it-works-large">
+                    <div class="row">
+                        <div class="how it works large-12 medium-12 small-12 " >
+                            <div class="item-how-it-works item-how-it-works-a large-4 medium-4 small-1 animated bounceInLeft">
+                            <div class="steps">
+                                <i class="fa fa-user-plus fa-3x" aria-hidden="true"></i>
+
+                                </div>
+                                <br/>
+                                <div class="steps-title">
+                                <span>Create an Account</span>
+                                </div>
+                                <div class="steps-description">
+                                <p class="steps-description" style="color:black">
+                                Tell us more about you so that we can tailor our events towards your area of interest
+                                    </p>
+                                </div>
+                                <div class="steps-create-account">
+                                <span>Create account now</span>
+                                </div>
+                            </div>
+
+                            <div class="item-how-it-works item-how-it-works-b large-4 medium-4 small-1">
+                            <div class="steps">
+                                <i class="fa fa-binoculars fa-3x" aria-hidden="true"></i>
+
+                                </div>
+                                <br/>
+                                <div class="steps-title">
+                                <span>Select the event</span>
+                                </div>
+                                <div class="steps-description">
+                                <p class="steps-description" style="color:black">
+                                From the widest range of events across the continent , select the event that you would like to attend
+                                    </p>
+                                </div>
+                                <div class="steps-create-account">
+                                <span>Find events now</span>
+                                </div>
+                            </div>
+
+                            <div class="item-how-it-works item-how-it-works-c large-4 medium-4 small-1">
+                            <div class="steps">
+                                <i class="fa  fa-car fa-3x" aria-hidden="true"></i>
+
+                                </div>
+                                <br/>
+                                <div class="steps-title">
+                                <span class="steps-title">Get tickets</span>
+                                </div>
+                                <div class="steps-description">
+                                <p class="steps-description" style="color:black">
+                                You will recieve a ticket to your email so you and your friends can attend events all around town
+                                    </p>
+                                </div>
+                                <div class="steps-create-account">
+                                <span>Take me there</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                        </div>
+
+                    <div class="download-app-large">
+                    <div class="row">
+                        <div class="app-pic large-6 meduim-6 small-6">
+                            <div class="image-phone"></div>
+                            <div class="image-phone-two"></div>
+
+                        </div>
+                        <div class="app-text large-6 meduim-6 small-6">
+                        <p class="app-banner-lg">Be the first to know<br>Download our app for free!</p>
+                            <p class="app-offers">
+                            <span class="offers-title">
+                                What you can get from our app
+                                </span>
+                                <span class="app-indesigns app-event-a large-12 medium-12 small-12">
+                                <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                    &nbsp; Alert on events
+                                </span>
+                                <span class="app-indesigns app-event-b large-12 medium-12 small-12">
+                                <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                    &nbsp; Purchase tickets
+                                </span>
+                                <span class="app-indesigns app-event-c large-12 medium-12 small-12">
+                                <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                    &nbsp; Share to friends
+                                </span>
+                                 <span class="app-indesigns app-event-d large-12 medium-12 small-12">
+                                <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                    &nbsp; Invite some people
+                                </span>
+                                <span class="app-indesigns app-event-e large-12 medium-12 small-12">
+                                <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                    &nbsp; Get promotion and offers
+                                </span>
+                            </p>
+                            <div class="play-store-button app-event-f">
+
+                            </div>
+                        </div>
+
+                        </div>
+
+                    </div>
+                    <div class="testimonials-large">
+
+                    <div class="row">
+
+                        <div class="banner testimonials-slide">
+                            <ul>
+                                <li>
+                                <div class="testimonial-container">
+                                    <div class="testimonial-avatar">
+                                    <img src="http://cdn.karibupay.co.ke/img/avatar.jpg" height="100" width="100">
+                                    </div>
+                            <div class="testimonial-body">
+
+                            <span class="testimonial-texty"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</span>
+                            </div>
+                            <div class="testimonial-author">
+                            -- John Doe --
+                            </div>
+
+                        </div>
+                                </li>
+
+                             <li>
+                                <div class="testimonial-container">
+                            <div class="testimonial-body">
+                                <div class="testimonial-avatar">
+                                    <img src="http://cdn.karibupay.co.ke/img/avatar.jpg" height="100" width="100">
+                                    </div>
+
+                            <span class="testimonial-texty"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</span>
+                            </div>
+                            <div class="testimonial-author">
+                            -- John Doe --
+                            </div>
+
+                        </div>
+                                </li>
+                             <li>
+                                <div class="testimonial-container">
+                            <div class="testimonial-body">
+                                <div class="testimonial-avatar">
+                                    <img src="http://cdn.karibupay.co.ke/img/avatar.jpg" height="100" width="100">
+                                    </div>
+
+                            <span class="testimonial-texty"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</span>
+                            </div>
+                            <div class="testimonial-author">
+                            -- John Doe --
+                            </div>
+
+                        </div>
+                                </li>
+
+                            </ul>
+
+
+
+
+                        </div>
+
+                        </div>
+                    </div>
+                    <div class="contct-us-large">
+                    <div class="row">
+                        <div class="contact-us-title">
+                        Send us a message
+                        </div>
+                        <form action="/enquiries/" method="post">
+                            {% csrf_token %}
+                        <div class="form-large large-12 medium-12 small-12">
+                        <div class="form-name form-name-name large-3 medium-3 small-12">
+                            <input class="form-input-text" type="text" name="name" placeholder="Enter your name" autocomplete="off">
+                            </div>
+                            <div class="form-name form-name-email large-3 medium-3 small-12">
+                            <input class="form-input-text" type="email" name="email" placeholder="Enter your email" autocomplete="off">
+                            </div>
+                            <div class="form-name form-name-subject large-3 medium-3 small-12">
+                            <input class="form-input-text" type="subject" name="subject" placeholder="Enter Your Subject" autocomplete="off">
+                            </div>
+
+                            <div class="form-name form-name-message large-12 medium-12 small-12">
+                                <textarea class="form-message" name="message" placeholder="Enter your message"></textarea>
+                            </div>
+                            <div class="form-name form-name-button large-3 medium-3 small-12">
+                                <input type="submit" class="submit-form-btn" value="submit">
+                            </div>
+
+
+                        </div>
+                            </form>
+                        <div class="social-circles small-12 large-12 medium-12">
+                        <div class="twitter-circle">
+                            <i class="fa fa-twitter fa-3x" aria-hidden="true" ></i>
+
+
+                            </div>
+                            <div class="facebook-circle social-circle-next">
+                            <i class="fa fa-facebook fa-3x" aria-hidden="true" ></i>
+                            </div>
+                            <div class="gplus-circle social-circle-next">
+                            <i class="fa fa-google-plus fa-3x" aria-hidden="true" ></i>
+                            </div>
+                            <div class="gplus-circle gplus-circle-b  social-circle-next">
+                            <i class="fa fa-youtube fa-3x" aria-hidden="true" ></i>
+                            </div>
+                            <div class="gplus-circle gplus-circle-c social-circle-next">
+                            <i class="fa fa-instagram fa-3x" aria-hidden="true" ></i>
+                            </div>
+
+                        </div>
+                        <div class="credits-section small-12 large-12 medium-12">
+                        &copy; 2016
+                            <span>Site Developed by i254 consulting</span>
+                        </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+        </div>
+            </div>
+        </div>
+
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <script src='http://unslider.com/unslider.min.js'></script>
+        <script>
+            $(function() {
+                $('.banner').unslider({
+                    speed: 500,
+                    delay: 6000,
+                    autoplay:true,
+                    complete: function() {},
+                    keys: true,
+                    dots: true,
+                    fluid: true,
+        });
+            });
+
+        </script>
+<script src="https://cdn.jsdelivr.net/scrollreveal.js/3.3.1/scrollreveal.min.js"></script>
+        <script src='http://cdn.karibupay.co.ke/js/css3-animate-it.js'></script>
+        <script>
+window.sr = ScrollReveal({ reset: true });
+            sr.reveal('.item-how-it-works-a', { duration: 2000 });
+            sr.reveal('.item-how-it-works-b', { duration: 3000 });
+            sr.reveal('.item-how-it-works-c', { duration: 4000 });
+
+sr.reveal('.app-pic', { duration: 2000 });
+sr.reveal('.app-banner-lg', { duration: 3000 });
+sr.reveal('.offers-title', { duration: 4000 });
+sr.reveal('.app-event-a', { duration: 6000 });
+sr.reveal('.app-event-b', { duration: 7000 });
+sr.reveal('.app-event-c', { duration: 8000 });
+sr.reveal('.app-event-d', { duration: 9000 });
+sr.reveal('.app-event-e', { duration: 10000 });
+sr.reveal('.app-event-f', { duration: 11000 });
+
+sr.reveal('.testimonial-avatar', { duration: 2000 });
+sr.reveal('.testimonial-texty', { duration: 4000 });
+sr.reveal('.testimonial-author', { duration: 8000 });
+
+sr.reveal('.contact-us-title', { duration: 2000 });
+sr.reveal('.form-name-name', { duration: 4000 });
+sr.reveal('.form-name-email', { duration: 6000 });
+sr.reveal('.form-name-subject', { duration: 8000 });
+sr.reveal('.form-name-message', { duration: 10000 });
+sr.reveal('.form-name-button', { duration: 12000 });
+sr.reveal('.form-name-button', { duration: 14000 });
+
+sr.reveal('.twitter-circle', { duration: 16000 });
+sr.reveal('.facebook-circle', { duration: 17000 });
+sr.reveal('.gplus-circle', { duration: 18000 });
+sr.reveal('.gplus-circle-b', { duration: 19000 });
+sr.reveal('.gplus-circle-c', { duration: 20000 });
+
+sr.reveal('.credits-section', { duration: 22000 });
+
+
+
+        </script>
+    		<script src="http://cdn.karibupay.co.ke/js/main4.js"></script>
+        <script src="http://cdn.karibupay.co.ke/js/cl.js"></script>
+        <script src="http://cdn.karibupay.co.ke/js/bar.js"></script>
+        <script src="http://cdn.karibupay.co.ke/js/vegas.min.js"></script>
+        <script src="http://cdn.karibupay.co.ke/js/app.min.js"></script>
+        <script src="http://cdn.karibupay.co.ke/js/foundation.js"></script>
+    </body>
+</html>
