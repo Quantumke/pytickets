@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>KaribuPay::Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,900">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        <link rel="stylesheet" type="text/css" href="http://cdn.karibupay.co.ke/css/home.css" />
+        <link rel="stylesheet" type="text/css" href="http://cdn.karibupay.co.ke/css/custom.css" />
+        <link rel="stylesheet" type="text/css" href="http://cdn.karibupay.co.ke/css/foundation.css">
+        <link rel="stylesheet" type="text/css" href="http://cdn.karibupay.co.ke/css/iziModal.css">
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+        <link rel="stylesheet" href="http://cdn.karibupay.co.ke/css/style.css">
+
+		<noscript>
+			<link rel="stylesheet" type="text/css" href="http://cdn.karibupay.co.ke/css/styleNoJS.css" />
+		</noscript>
+    </head>
+    <body>
+
+        <div class="container homepage-slider">
+            <div class="overlay-gradient">
+
+            <div class="header-band clearfix">
+            <div class="row">
+                <span class="logo-large"><img src="http://cdn.karibupay.co.ke/img/KaribuPay%20Logo-01.png" height="40px"width="120px"></span>
+
+
+                <span class="right">
+                   <ul class="menu-items">
+                    <li class="menu-item menu-item-active "><a href="/">Home</a> </li>
+
+                    <li class="menu-item"><a href="/how_it_works/">How It Works</a> </li>
+{#                    <li class="menu-item">Add Event</li>#}
+{#                   #}
+                    <li class="menu-item">
+                        <a href="/checkout/">
+                    <i class="fa fa-2x fa-shopping-cart" aria-hidden="true"></i>
+                    </a>
+                    </li>
+                    <li class="menu-item">
+
+                    {% if user and not user.is_anonymous %}
+
+       <a>Hello {{ user.get_full_name|default:user.username  }}!</a>
+
+       <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
+
+   {% else %}
+                       <a class=" trigger">Join Us</a></li>
+                    {% endif %}
+
+                    </ul>
+                    <span class="shopping-cart-icon">
+
+                    </span>
+                </span>
+                <div class="clr"></div>
+            </div></div>
+
+                <div id="modal" class="iziModal" style="min-height:400px;">
+<div id="tabs" class="c-tabs no-js">
+  <div class="c-tabs-nav">
+    <a href="#" class="c-tabs-nav__link is-active"><span>SignIn</span></a>
+    <a href="#" class="c-tabs-nav__link"><span>SignUp</span></a>
+
+  </div>
+  <div class="c-tab is-active">
+    <div class="c-tab__content">
+        <span class="header-overlay small-12 large-12 medium-12">
+        Please Fill in the form to login
+        </span>
+        <div class="login-form-overlay large-12 small-12 medium-12">
+          <form action="/login_user/" method="POST">
+        {% csrf_token %}
+        <input class="input-login-overlay" type="text" name="username" placeholder="Enter Your Username">
+
+            <input class="input-login-overlay" type="password" name="password" placeholder="Enter Your password">
+
+            <input class="input-overlay-submit" type="submit" name="submit" value="submit">
+            </form>
+        <div class="social-login-buttons">
+        <a class="social-liks-a"  href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"><span class="twitter-login">
+            <i class="fa fa-twitter" aria-hidden="true"></i> &nbsp; Login with Twitter
+            </span>
+ </a>
+            <a class="social-liks-a"  href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"><span class="facebook-login">
+            <i class="fa fa-facebook" aria-hidden="true"></i> &nbsp; Login with Facebook
+            </span>
+ </a>
+            <a class="social-liks-a"  href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}"><span class="gplus-login">
+            <i class="fa fa-google-plus-official" aria-hidden="true"></i> &nbsp; Login with Google
+            </span>
+ </a>
+        </div>
+        </div>
+
+      </div>
+  </div>
+  <div class="c-tab">
+    <div class="c-tab__content">
+        <span class="header-overlay small-12 large-12 medium-12">
+        Please Fill in the form to SignUp
+        </span>
+        <div class="signup-form-overlay large-12 small-12 medium-12">
+        <form action="/register_user/" method="POST">
+        {% csrf_token %}
+        <input class="input-login-overlay" type="text" name="username" placeholder="Enter a Username">
+
+                <input class="input-login-overlay" type="email" name="email" placeholder="Enter a Email">
+
+            <input class="input-login-overlay" type="password" name="password" placeholder="Enter a password">
+
+            <input class="input-overlay-submit" type="submit" name="submit" value="submit">
+            </form>
+        <div class="social-login-buttons">
+        <a class="social-liks-a"  href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"><span class="twitter-login">
+            <i class="fa fa-twitter" aria-hidden="true"></i> &nbsp; Sign Up with Twitter
+            </span>
+ </a>
+            <a class="social-liks-a"  href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"><span class="facebook-login">
+            <i class="fa fa-facebook" aria-hidden="true"></i> &nbsp; Sign Up with Facebook
+            </span>
+ </a>
+            <a class="social-liks-a"  href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}"><span class="gplus-login">
+            <i class="fa fa-google-plus-official" aria-hidden="true"></i> &nbsp; Sign Up with Google
+            </span>
+ </a>
+        </div>
+        </div>
+
+      </div>
+  </div>
+
+</div>
+
+</div>
+
+
+
+
+            <div id="slider" class="sl-slider-wrapper">
+
+				<div class="sl-slider">
+
+					<div class="sl-slide bg-1" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2" style=" background: url(http://cdn.karibupay.co.ke/img/unsplash1.jpg);background-size: cover;
+    opacity: 0.6;">
+						<div class="sl-slide-inner">
+							<div class="deco" data-icon="{{ f1l1 }}"></div>
+							<h2 class="event-title">{{ header_events1.title}}</h2>
+                            <span class="event-venue">
+                                <span>Venue: {{ header_events1.location}}</span><br>
+                                <span>Scroll Down For More Events</span><br><br>
+{#                                <span class="more-details-btn">#}
+{#                                <a style="color:white" href="../{{ header_events1.slug}}">#}
+{##}
+{#                                More Details</a>#}
+{#                                </span>#}
+                                <img class="animated  pulse infinite" src="http://www.iconsdb.com/icons/preview/white/arrow-204-xxl.png" height="30" width="40">
+
+                            </span>
+
+						</div>
+					</div>
+
+					<div class="sl-slide bg-2" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5" style=" background: url(http://cdn.karibupay.co.ke/img/unsplash1.jpg);background-size: cover;
+    opacity: 0.6;">
+						<div class="sl-slide-inner">
+							<div class="deco" data-icon="{{ f2l1 }}"></div>
+							<h2 class="event-title">{{ header_events2.title }}</h2>
+							<span class="event-venue">
+                                <span>Venue: {{ header_events2.location }}</span><br>
+                                <span>Scroll Down For More Events</span><br><br>
+
+{#                                <span class="more-details-btn">#}
+{#                                 <a style="color:white" href="../{{ header_events1.slug}}">#}
+{##}
+{#                                More Details</a>#}
+{##}
+{#                                </span>#}
+                                                               <img class="animated  pulse infinite" src="http://www.iconsdb.com/icons/preview/white/arrow-204-xxl.png" height="30" width="40">
+
+
+                            </span>
+						</div>
+					</div>
+
+					<div class="sl-slide bg-3" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1"  style="background:url(http://cdn.karibupay.co.ke/img/unsplash1.jpg);background-size: cover;
+    opacity: 0.6;">
+						<div class="sl-slide-inner">
+							<div class="deco" data-icon="{{ f3l1 }}"></div>
+							<h2 class="event-title">{{ header_events3.title }}</h2>
+							<span class="event-venue">
+                                <span>Venue: {{ header_events3.location }}</span><br>
+                                <span>Scroll Down For More Events</span><br><br>
+
+{#                                <span class="more-details-btn">#}
+{#                                 <a style="color:white" href="{{ header_events3.slug}}">#}
+{##}
+{#                                More Details</a>#}
+{#                                </span>#}
+                                                                <img class="animated  pulse infinite" src="http://www.iconsdb.com/icons/preview/white/arrow-204-xxl.png" height="30" width="40">
+
+
+                            </span>
+						</div>
+					</div>
+
+					<div class="sl-slide bg-4" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="25" data-slice1-scale="2" data-slice2-scale="1"   style="background:url(http://cdn.karibupay.co.ke/img/unsplash1.jpg);background-size: cover;
+    opacity: 0.6;">
+                        <div class="sl-slide-inner">
+							<div class="deco" data-icon="{{ f4l1 }}"></div>
+							<h2 class="event-title">{{ header_events4.title }}</h2>
+							<span class="event-venue">
+                                <span>Venue: {{ header_events4.location }}</span><br>
+                                <span>Scroll Down More Events</span><br><br>
+
+{#                                <span class="more-details-btn">#}
+{##}
+{#                                <a style="color:white" href="{{ header_events4.slug}}">#}
+{##}
+{#                                More Details</a>#}
+{#                                </span>#}
+                                                            <img class="animated  pulse infinite" src="http://www.iconsdb.com/icons/preview/white/arrow-204-xxl.png" height="30" width="40">
+
+                            </span>
+						</div>
+					</div>
+
+
+
+
+				</div><!-- /sl-slider -->
+
+				<nav id="nav-arrows" class="nav-arrows">
+					<span class="nav-arrow-prev">Previous</span>
+					<span class="nav-arrow-next">Next</span>
+				</nav>
+
+				<nav id="nav-dots" class="nav-dots">
+					<span class="nav-dot-current"></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</nav>
+
+			</div><!-- /slider-wrapper -->
+
+        </div></div>
+
+
+
+         <div class="top-events-large">
+        <div class="row">
+            <div class="top-events small-12 medium-12 large-12">
+
+
+
+        </div>
+
+            </div>
+        </div>
+
+      <div class="events-large" style="">
+        <div class="row" >
+            <div class="events-band-title medium-12 large-12 small-12">
+            Up Comming events
+            </div>
+            <input id="tab1" type="radio" name="tabs" checked>
+  <label class="c-tabs" for="tab1">Up Comming Events</label>
+
+  <input id="tab2" type="radio" name="tabs">
+  <label class="c-tabs" for="tab2">Featured Events</label>
+
+  <input id="tab3" type="radio" name="tabs">
+  <label class="c-tabs" for="tab3">Accomodation Packages</label>
+
+            <section id="content1">
+            {% for upcomming_events in upcomming_events %}
+            <div class="spaced-events events-holder-holder flip-container" ontouchstart="this.classList.toggle('hover'); " >
+            <div class="events-holder flipper">
+                <div class="front">
+            <div class="events-image">
+                <img class="blurme" src="../images/{{MEDIA_URL}}{{ upcomming_events.image}}" height="250" width="200">
+
+                </div>
+                <div class="event-details">
+                <span>{{ upcomming_events.title }}</span><br>
+                <span>{{ upcomming_events.location }}</span><br>
+                </div>
+                </div>
+                <div class="back">
+                    <br>
+
+                <span class="event-organizer"><img  src="http://cdn.karibupay.co.ke/img/KaribuPay%20Logo-01.png" height="20" width="100"></span>
+                    <br><br>
+
+                    <span class="event-title-back">
+                  <span class="event-title-bold">Event:</span>
+                        {{ upcomming_events.title}}
+                    </span><br><br>
+                   <span class="event-date">{{ upcomming_events.event_date}}</span><br><br>
+                    <span class="in-attendance-title">In Attendance</span><br>
+                    <span class="event-inattendance-back">
+                    <li>{{ upcomming_events.inattendance}}</li>
+
+
+                    </span><br>
+                    <span class="btn-book">
+                    <a style="color:white; text-decoration:none" href="../{{ upcomming_events.slug}}">
+
+                    View more</a></span>
+
+                </div>
+
+            </div>
+           </div>
+           {% endfor %}
+
+
+
+
+
+
+
+
+
+            </section>
+
+
+              <section id="content2">
+              {% for featured_upcomming in featured_upcomming %}
+            <div class="spaced-events events-holder-holder flip-container" ontouchstart="this.classList.toggle('hover'); " >
+            <div class="events-holder flipper">
+                <div class="front">
+            <div class="events-image">
+                <img class="blurme" src="../images/{{MEDIA_URL}}{{featured_upcomming.image}}" height="250" width="200">
+
+                </div>
+                <div class="event-details">
+                <span>{{ featured_upcomming.title }}</span><br>
+                <span>{{ featured_upcomming.location }}</span><br>
+                </div>
+                </div>
+                <div class="back">
+                    <br>
+
+                <span class="event-organizer"><img  src="http://cdn.karibupay.co.ke/img/KaribuPay%20Logo-01.png" height="20" width="100"></span>
+                    <br><br>
+
+                    <span class="event-title-back">
+                  <span class="event-title-bold">Event:</span>
+                        {{featured_upcomming.title}}
+                    </span><br><br>
+                   <span class="event-date">{{featured_upcomming.event_date}}</span><br><br>
+                    <span class="in-attendance-title">In Attendance</span><br>
+                    <span class="event-inattendance-back">
+                    <li>{{featured_upcomming.inattendace}}</li>
+
+
+                    </span><br>
+                    <span class="btn-book">
+                    <a style="color:white; text-decoration:none" href="../{{featured_upcomming.slug}}">View more
+                    </a>
+
+                    </span>
+
+                </div>
+
+            </div>
+           </div>
+
+           {% endfor %}
+
+
+
+
+
+
+
+            </section>
+
+             <section id="content3">
+              {% for featured_upcomming in featured_upcomming %}
+            <div class="spaced-events events-holder-holder flip-container" ontouchstart="this.classList.toggle('hover'); " >
+            <div class="events-holder flipper">
+                <div class="front">
+            <div class="events-image">
+                <img class="blurme" src="../images/{{MEDIA_URL}}{{featured_upcomming.image}}" height="250" width="200">
+
+                </div>
+                <div class="event-details">
+                <span>{{ featured_upcomming.title }}</span><br>
+                <span>{{ featured_upcomming.location }}</span><br>
+                </div>
+                </div>
+                <div class="back">
+                    <br>
+
+                <span class="event-organizer"><img  src="http://cdn.karibupay.co.ke/img/KaribuPay%20Logo-01.png" height="20" width="100"></span>
+                    <br><br>
+
+                    <span class="event-title-back">
+                  <span class="event-title-bold">Event:</span>
+                        {{featured_upcomming.title}}
+                    </span><br><br>
+                   <span class="event-date">{{featured_upcomming.event_date}}</span><br><br>
+                    <span class="in-attendance-title">In Attendance</span><br>
+                    <span class="event-inattendance-back">
+                    <li>{{featured_upcomming.inattendace}}</li>
+
+
+                    </span><br>
+                    <span class="btn-book">
+                    <a style="color:white; text-decoration:none" href="../{{featured_upcomming.slug}}">View more
+                    </a>
+
+                    </span>
+
+                </div>
+
+            </div>
+           </div>
+
+           {% endfor %}
+
+
+
+
+
+
+
+            </section>
+
+
+
+
+
+          </div>
+        </div>
+
+        <div class="featuredevents">
+        <div class="row">
+            <div class="featured-events-title">
+            <span>Top Events</span>
+            </div>
+            	<div class="main">
+				<div id="mi-slider" class="mi-slider">
+
+
+
+                    <ul>
+                        {% for leisure_events in leisure_events %}
+						<li><a href="../{{ leisure_events.slug }}"><img class="" src="../images/{{MEDIA_URL}}{{ leisure_events.image }}" alt="img01">
+                            <span class="event-dates">{{leisure_events.event_date |date:'d'}} <br> {{leisure_events.event_date |date:"M"}}</span>
+
+                            <h4>{{ leisure_events.title }}</h4></a></li>
+                                                        {% endfor %}
+                        </ul>
+
+
+
+
+  <ul>
+    {% for cultural_events in cultural_events %}
+
+        <li><a href="../{{ cultural_events.slug }}"><img class="" src="../images/{{MEDIA_URL}}{{ cultural_events.image }}" alt="img01">
+<span class="event-dates">{{cultural_events.event_date |date:'d'}} <br> {{cultural_events.event_date |date:"M"}}</span>
+        <h4>{{ cultural_events.title }}</h4></a></li>
+                                         {% endfor %}
+
+					</ul>
+
+                      <ul>
+                                            {% for awards_and_gallas in awards_and_gallas %}
+
+                        <li><a href="../{{awards_and_gallas.slug}}"><img class="" src="../images/{{MEDIA_URL}}{{ awards_and_gallas.image }}" alt="img01">
+<span class="event-dates">{{awards_and_gallas.event_date |date:'d'}} <br> {{awards_and_gallas.event_date |date:"M"}}</span>
+                            <h4>{{ awards_and_gallas.title }}</h4></a></li>
+
+					                     {% endfor %}
+
+                    </ul>
+
+                        <ul>
+                                                  {% for balls in balls %}
+
+                        <li><a href="../{{ balls.slug}}"><img class="" src="../images/{{MEDIA_URL}}{{ balls.image }}" alt="img01">
+<span class="event-dates">{{balls.event_date |date:'d'}} <br> {{balls.event_date |date:"M"}}</span>
+                            <h4>{{ balls.title }}</h4></a></li>
+                                                {% endfor %}
+
+
+					</ul>
+					<nav>
+						<a href="#">Leisure Events</a>
+						<a href="#">Cultural Events</a>
+						<a href="#">Balls</a>
+						<a href="#">Awards and Galas</a>
+					</nav>
+				</div>
+			</div>
+          <div class="other-options">
+
+              <span class="option-answer">
+              Discover More Events
+              </span>
+
+            </div>
+
+
+            </div>
+        </div>
+        <div class="footer-large">
+        <div class="row">
+            <div class="footer-contatus small-4 medium-4 large-4">
+                <span style="font-size:bold"><h5>CONTACT</h5></span>
+                <span>Address: 20009-01100</span><br>
+                <span>Phone:0700000000</span>
+                <span>Email: Hello@karibupay.com</span>
+
+            </div>
+             <div class="footer-ourinfo small-4 medium-4 large-4">
+                <span style="font-size:bold"><h5>About Us</h5></span>
+                <span>About Us </span><br>
+                <span>Privacy Policy</span><br>
+                <span>Terms and Conditions</span>
+
+            </div>
+            <div class="footer-sub small-4 medium-4 large-4">
+                <span style="font-size:bold"><h5>Subscribe To our Newsletter</h5></span>
+               <input type="text" class="subscribe-form" name="subscribe">
+                <input type="submit" class="subscribe-submit" value="Subscribe">
+            </div>
+
+
+            </div>
+            <div class="footer-cop">
+                <div class="row">
+                <span>Copyright 2016 Developed by i254 consulting With Passion </span>
+                </div>
+
+            </div>
+        </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="http://cdn.karibupay.co.ke/js/jquery.catslider.js"></script>
+		<script>
+			$(function() {
+
+				$( '#mi-slider' ).catslider();
+
+			});
+		</script>
+  <script src="http://cdn.karibupay.co.ke/js/prefixfree.min.js"></script>
+<script src='http://kenwheeler.github.io/slick/slick/slick.js'></script>
+
+        <script src="http://cdn.karibupay.co.ke/js/slider.js"></script>
+
+<!--		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>-->
+<!--        <script src="js/jquery-1.11.2.min.js"></script>-->
+		<script type="text/javascript" src="http://cdn.karibupay.co.ke/js/jquery.ba-cond.min.js"></script>
+		<script type="text/javascript" src="http://cdn.karibupay.co.ke/js/jquery.slitslider.js"></script>
+        <script type="text/javascript" src="http://cdn.karibupay.co.ke/js/iziModal.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+        <script>
+$("#modal").iziModal({
+    overlayClose: true,
+    overlay: true,
+    overlayClose: true,
+    overlayColor: 'rgba(0, 0, 0, 0.4)',
+
+    width: 600,
+    autoOpen: false,
+    overlayColor: 'rgba(0, 0, 0, 0.6)',
+});
+$(document).on('click', '.trigger', function (event) {
+    event.preventDefault();
+    $('#modal').iziModal('open');
+});
+    $(document).on('click', '.sl-slider-wrapper', function (event) {
+    event.preventDefault();
+            $('#modal').iziModal('close');
+        console.log("Closing Modal")
+});
+
+
+        </script>
+        <script src="http://cdn.karibupay.co.ke/js/tabs.js"></script>
+        <script>
+  var myTabs = tabs({
+    el: '#tabs',
+    tabNavigationLinks: '.c-tabs-nav__link',
+    tabContentContainers: '.c-tab'
+  });
+  myTabs.init();
+</script>
+		<script type="text/javascript">
+			$(function() {
+
+				var Page = (function() {
+
+					var $navArrows = $( '#nav-arrows' ),
+						$nav = $( '#nav-dots > span' ),
+						slitslider = $( '#slider' ).slitslider( {
+							onBeforeChange : function( slide, pos ) {
+
+								$nav.removeClass( 'nav-dot-current' );
+								$nav.eq( pos ).addClass( 'nav-dot-current' );
+
+							}
+						} ),
+
+						init = function() {
+
+							initEvents();
+
+						},
+						initEvents = function() {
+
+							// add navigation events
+							$navArrows.children( ':last' ).on( 'click', function() {
+
+								slitslider.next();
+								return false;
+
+							} );
+
+							$navArrows.children( ':first' ).on( 'click', function() {
+
+								slitslider.previous();
+								return false;
+
+							} );
+
+							$nav.each( function( i ) {
+
+								$( this ).on( 'click', function( event ) {
+
+									var $dot = $( this );
+
+									if( !slitslider.isActive() ) {
+
+										$nav.removeClass( 'nav-dot-current' );
+										$dot.addClass( 'nav-dot-current' );
+
+									}
+
+									slitslider.jump( i + 1 );
+									return false;
+
+								} );
+
+							} );
+
+						};
+
+						return { init : init };
+
+				})();
+
+				Page.init();
+
+
+
+			});
+		</script>
+        <style type="text/css">
+            .spaced-events:nth-child(2){
+                margin-left: 250px;
+            }
+             .spaced-events:nth-child(3){
+                margin-left: 500px;
+            }
+            .spaced-events:nth-child(4){
+                margin-left: 750px;
+            }
+
+
+        </style>
+        <!-- <script type="text/javascript">
+            function MarginLeftFunc()
+{
+    var i;
+    var elements = document.getElementsByClassName('spaced-events');
+    var elementStyle = window.getComputedStyle(elements[0]);//gives the style of first element
+
+    var margleft =elementStyle.marginLeft;//get margin left value
+     margleft = margleft.replace("px", " ");//remove px
+     margleft = parseInt(margleft);//convert string to integer
+    for(i=0; i<elements.length; i++)
+    {
+        margleft+=250;
+        elements[i].style.marginLeft = margleft + "px";
+        console.log(elements[i].style.marginLeft);
+    }
+}
+window.addEventListener('load', MarginLeftFunc, false);
+
+        </script>
+ -->	</body>
+</html>
